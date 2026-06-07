@@ -68,6 +68,24 @@ public class CredentialDAO {
 
     } catch (SQLException e) {
         e.printStackTrace();
+    } }
+    
+    public void deleteCredential(int id) {
+
+    String sql =
+            "DELETE FROM credencial WHERE id_credencial=?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, id);
+
+        stmt.executeUpdate();
+
+        System.out.println("Credencial eliminada");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
     }
 }
 }

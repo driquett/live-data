@@ -87,9 +87,36 @@ public class MainApp {
                 employeeDAO.deleteEmployee(deleteId);
                 break;
     
-            }
+            case 7:
+            System.out.print("ID Credencial: ");            
+            int credentialId = scanner.nextInt();
+            scanner.nextLine();
 
-        } while (option != 7);
+    System.out.print("Nuevo codigo: ");
+    String newCode = scanner.nextLine();
+
+    System.out.print("ID empleado: ");
+    int employeeId = scanner.nextInt();
+
+    credentialDAO.updateCredential(
+            new Credential(
+                    credentialId,
+                    newCode,
+                    employeeId
+            )
+    );
+    case 8:
+
+    System.out.print("ID credencial a eliminar: ");
+    int deleteCredentialId = scanner.nextInt();
+
+    credentialDAO.deleteCredential(deleteCredentialId);
+
+    break;
+
+    }
+
+        } while (option != 9);
         scanner.close();
     }
-}
+} 
