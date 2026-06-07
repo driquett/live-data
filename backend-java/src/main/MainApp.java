@@ -11,7 +11,7 @@ public class MainApp {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); 
         EmployeeDAO employeeDAO = new EmployeeDAO();
         CredentialDAO credentialDAO = new CredentialDAO();
 
@@ -23,7 +23,11 @@ public class MainApp {
             System.out.println("2. Listar empleados");
             System.out.println("3. Crear credencial");
             System.out.println("4. Listar credenciales");
-            System.out.println("5. Salir");
+            System.out.println("5. Actualizar empleado");
+            System.out.println("6. Eliminar empleado");
+            System.out.println("7. Actualizar credencial");
+            System.out.println("8. Eliminar credencial");
+            System.out.println("9. Salir");
 
             option = scanner.nextInt();
             scanner.nextLine();
@@ -59,8 +63,33 @@ public class MainApp {
                     credentialDAO.getCredentials().forEach(c ->
                             System.out.println(c.getId() + " - " + c.getCode()));
                     break;
+
+                case 5: 
+                    System.out.print("ID Empleado: ");
+                    int updateId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("Nuevo nombre: ");
+                    String newName = scanner.nextLine();
+                    System.out.print("Nuevo documento: ");
+                    String newDocument = scanner.nextLine();
+                    employeeDAO.updateEmployee(
+                        new Employee(
+                    updateId,
+                    newName,
+                    newDocument
+            )
+    ); break; 
+    
+                case 6: 
+                System.out.print("ID Empleado a eliminar: ");
+                int deleteId = scanner.nextInt();
+                employeeDAO.deleteEmployee(deleteId);
+                break;
+    
             }
 
-        } while (option != 5);
+        } while (option != 7);
+        scanner.close();
     }
 }

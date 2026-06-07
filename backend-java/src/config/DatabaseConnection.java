@@ -14,7 +14,7 @@ public class DatabaseConnection {
     private static final String USER = "root";
 
     // Contraseña de MySQL
-    private static final String PASSWORD = "";
+    private static final String PASSWORD = "Pilot123+*";
 
     // Método para conectar
     public static Connection getConnection() {

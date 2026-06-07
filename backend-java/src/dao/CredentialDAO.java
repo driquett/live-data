@@ -47,5 +47,27 @@ public class CredentialDAO {
         }
 
         return list;
+        
     }
+
+    public void updateCredential(Credential credential) {
+
+    String sql =
+            "UPDATE credencial SET codigo=?, id_empleado=? WHERE id_credencial=?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setString(1, credential.getCode());
+        stmt.setInt(2, credential.getEmployeeId());
+        stmt.setInt(3, credential.getId());
+
+        stmt.executeUpdate();
+
+        System.out.println("Credencial actualizada");
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 }
